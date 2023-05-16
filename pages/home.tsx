@@ -38,12 +38,21 @@ export default function Home() {
           totalPages={data?.collection.pages ?? 0}
           onChange={(page) => setFilters({ ...filters, page })}
           firstPage={1}
+          className="hidden sm:flex"
         />
       </Heading>
       <CarFilters
         className="m-10 mb-0"
         value={filters}
         onChange={onChangeFilters}
+      />
+
+      <Pagination
+        page={filters.page}
+        totalPages={data?.collection.pages ?? 0}
+        onChange={(page) => setFilters({ ...filters, page })}
+        firstPage={1}
+        className="sm:hidden flex mt-8"
       />
       <div className="h-2 m-10 mb-1">
         {isLoading && (
