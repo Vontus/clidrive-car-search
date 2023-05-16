@@ -28,7 +28,6 @@ export const CarFilters: FC<Props> = ({ className, value, onChange }) => {
       />
       <Select
         data-testid="year-select"
-        placeholder="Year"
         value={value.year}
         onChange={(e) => onChange?.({ ...value, year: Number(e.target.value) })}
         className="bg-white min-w-[30px]"

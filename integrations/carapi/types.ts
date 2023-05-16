@@ -22,7 +22,7 @@ export const CarApiResponse = z.object({
 export type CarApiResponse = z.infer<typeof CarApiResponse>;
 
 export const CarApiRequest = z.object({
-  page: z.number().optional(),
+  page: z.number(),
   limit: z.number().optional(),
   year: z.number().optional(),
   make: z.string().optional(),

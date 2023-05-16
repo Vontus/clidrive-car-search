@@ -9,7 +9,7 @@ test("should see the car list page", async ({ page }) => {
 
 test("should see 50 cars", async ({ page }) => {
   await page.goto("/");
-  await page.waitForSelector('[data-testid="car-list"]');
+  await page.waitForSelector('[data-testid="car-list"] li');
   const cars = await page.getByTestId("car-list").locator("li").count();
 
   expect(cars).toBe(50);
@@ -17,7 +17,7 @@ test("should see 50 cars", async ({ page }) => {
 
 test("should filter by make", async ({ page }) => {
   await page.goto("/");
-  await page.waitForSelector('[data-testid="car-list"]');
+  await page.waitForSelector('[data-testid="car-list"] li');
   await page.getByTestId("make-input").fill("BMW");
 
   // Wait for progress to disappear
@@ -36,7 +36,7 @@ test("should filter by make", async ({ page }) => {
 
 test("should filter by model", async ({ page }) => {
   await page.goto("/");
-  await page.waitForSelector('[data-testid="car-list"]');
+  await page.waitForSelector('[data-testid="car-list"] li');
   await page.getByTestId("model-input").fill("A3");
 
   // Wait for progress to disappear

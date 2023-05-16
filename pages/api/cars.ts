@@ -8,8 +8,6 @@ export default async function handler(
   const limit = Number(req.query.limit) || 50;
   const year = Number(req.query.year) || undefined;
 
-  console.log({ year });
-
   try {
     const models = await carApiFetch("/models/", {
       ...req.query,
