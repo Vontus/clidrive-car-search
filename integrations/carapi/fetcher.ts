@@ -1,20 +1,23 @@
-import { CarApiResponse } from "./types"
+import { CarApiResponse } from "./types";
 
 type Params = {
-  limit?: number
-  page?: number
-  year?: number
-  model?: string
-} & Record<string, any>
+  limit?: number;
+  page?: number;
+  model?: string;
+  verbose?: "yes" | undefined;
+} & Record<string, any>;
 
-export const carApiFetch = async (params?: Params): Promise<CarApiResponse> => {
-  const url = new URL(`${process.env.CARAPI_URL}/models` as string)
-  if (params) {
-    const searchParams = new URLSearchParams(params)
-    url.search = searchParams.toString()
-  }
-  const response = await fetch(url.toString())
-  const json = await response.json()
+export const carApiFetch = async (
+  url: string,
+  params: Params = {}
+): Promise<CarApiResponse> => {
+  const fullUrl = new URL(`${process.env.CARAPI_URL}${url}` as string);
 
-  return CarApiResponse.parse(json)
-}
+  const searchParams = new URLSearchParams(params);
+  fullUrl.search = searchParams.toString();
+
+  const response = await fetch(fullUrl.toString());
+  const json = await response.json();
+
+  return CarApiResponse.parse(json);
+};
