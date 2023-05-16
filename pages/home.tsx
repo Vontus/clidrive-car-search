@@ -2,8 +2,8 @@
 import { useFetch } from "@/hooks/useFetch";
 import { CarApiResponse, CarApiRequest } from "@/integrations/carapi/types";
 import { Box, Progress, SimpleGrid } from "@chakra-ui/react";
-import { CarCard } from "./components/CarCard";
-import { CarFilters } from "./components/CarFilters";
+import { CarCard } from "@/components/CarCard";
+import { CarFilters } from "@/components/CarFilters";
 import { useEffect, useState } from "react";
 import { Pagination } from "@/components/Pagination";
 import { Heading } from "@/components/Heading";
@@ -58,7 +58,7 @@ export default function Home() {
         as="ul"
       >
         {data?.data.map((car) => (
-          <Box as="li">
+          <Box as="li" key={car.id}>
             <CarCard car={car} />
           </Box>
         ))}
